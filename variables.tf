@@ -1,6 +1,10 @@
-variable "gitlab_project_id" {
+variable "gitlab_project_path" {
   type        = string
-  description = "project id you want to enable JWT auth for"
+  description = "project path you want to enable JWT auth for"
+
+  # Default is the corresponding GitLab repo
+  # https://gitlab.com/hashi-strawb/gitlab_vault_jwt_auth
+  default = "hashi-strawb/gitlab_vault_jwt_auth"
 }
 
 

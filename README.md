@@ -1,6 +1,10 @@
 # terraform_vault_gitlab_auth
 quick terraform job to configure Gitlab JWT Auth
 
+GitHub version of this repo: https://github.com/hashi-strawb/terraform_vault_gitlab_auth
+
+GitLab version of this repo: https://gitlab.com/hashi-strawb/gitlab_vault_jwt_auth
+
 
 ## Pre requirements
 to use this terraform code you will need access  to gitlab(the free,gtilab.com version is fine) and Vault (the OSS version is fine but I used HCP Vault).
@@ -11,7 +15,6 @@ you will need to generate a gitlab [OAuth2 token or project/personal access toke
 ### terraform provider
 this code needs that the Vault and JWT provider access be set as enviroment variables:
 ```bash
-export GITLAB_TOKEN=<GITLAB_TOKEN>
 export VAULT_TOKEN=<VAULT_TOKEN>
 export VAULT_ADDR=https://<VAULT_ADDRESS>:8200
 
@@ -21,14 +24,13 @@ this project has one manatory variable *gitlab_project_id* which is the name of 
 this can be set by creating a terraform.tfvars file:
 
 ```text
-gitlab_project_id = "guydemos/demostack"
+gitlab_project_path = "guydemos/demostack"
 ```
 
 ## running the code
 
 ```bash
 terraform init
-terraform plan
 terraform apply
 ```
 
