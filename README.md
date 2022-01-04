@@ -1,13 +1,15 @@
 # terraform_vault_gitlab_auth
-quick terraform job to configure Gitlab JWT Auth
+Quick terraform job to configure Gitlab JWT Auth
 
 GitHub version of this repo: https://github.com/hashi-strawb/terraform_vault_gitlab_auth
+
+(I use GitHub as a source-of-truth for my repos, for consistency)
 
 GitLab version of this repo: https://gitlab.com/hashi-strawb/gitlab_vault_jwt_auth
 
 
 ## Pre requirements
-to use this terraform code you will need access  to gitlab(the free,gtilab.com version is fine) and Vault (the OSS version is fine but I used HCP Vault).
+to use this terraform code you will need access to GitLab (the free SaaS GitLab.com version is fine) and Vault (the OSS version is fine but I used HCP Vault).
 
 
 ### terraform provider
