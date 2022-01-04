@@ -26,6 +26,8 @@ this can be set by creating a terraform.tfvars file:
 gitlab_project_path = "hashi-strawb/gitlab_vault_jwt_aut"
 ```
 
+(See example.auto.tfvars as an example)
+
 ## running the code
 
 ```bash
