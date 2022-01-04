@@ -29,6 +29,11 @@ resource "vault_jwt_auth_backend_role" "pipeline" {
     ref_type     = "branch"
   }
 
+  # This is used to determine identity within Vault.
+  # You can use any field from the JWT for this.
+  #
+  # In this case, I'm using project_path, so a unique project in GitLab will
+  # correspond to a Client within Vault
   user_claim = "project_path"
 
   claim_mappings = {
