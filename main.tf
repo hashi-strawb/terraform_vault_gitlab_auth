@@ -1,3 +1,14 @@
+terraform {
+  cloud {
+    organization = "hashi_strawb_demo"
+
+    workspaces {
+      name = "gitlab_vault_jwt_auth"
+    }
+  }
+}
+
+
 provider "vault" {
   # Configuration provided by VAULT_ADDR, VAULT_NAMESPACE env vars
   # Credentials provided by VAULT_TOKEN env var
