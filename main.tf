@@ -56,6 +56,9 @@ resource "vault_jwt_auth_backend_role" "pipeline" {
   # correspond to a Client within Vault
   user_claim = "project_path"
 
+  # For group, use the namespace
+  groups_claim = "namespace_path"
+
   claim_mappings = {
     "iss"                   = "iss"
     "project_id"            = "project_id"
