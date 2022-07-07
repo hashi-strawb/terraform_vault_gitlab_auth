@@ -80,3 +80,34 @@ resource "vault_jwt_auth_backend_role" "pipeline" {
   }
 }
 
+
+
+
+
+#
+# Advanced: Entity Groups
+#
+
+resource "vault_identity_group" "gitlab-hashi-strawb" {
+  namespace = vault_namespace.gitlab_auth.path_fq
+  name      = "GitLab Namespace: hashi-strawb"
+  type      = "external"
+  policies  = ["gitlab-hashi-strawb"]
+}
+
+resource "vault_identity_group_alias" "gitlab-hashi-strawb" {
+  namespace      = vault_namespace.gitlab_auth.path_fq
+  name           = "hashi-strawb"
+  mount_accessor = vault_jwt_auth_backend.gitlab.accessor
+  canonical_id   = vault_identity_group.gitlab-hashi-strawb.id
+}
+
+resource "vault_identity_group" "all-gitlab" {
+  namespace = vault_namespace.gitlab_auth.path_fq
+  name      = "All GitLab"
+  type      = "internal"
+  policies  = ["gitlab-all"]
+  member_group_ids = [
+    vault_identity_group.gitlab-hashi-strawb.id
+  ]
+}
