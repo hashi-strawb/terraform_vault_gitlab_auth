@@ -10,4 +10,4 @@ Vault Authentication and Read Secret:
     # VAULT_ADDR and VAULT_NAMESPACE are set in env vars in
     #  Settings > CI/CD
     - export VAULT_TOKEN="$(vault write -field=token auth/jwt/gitlab/login role=app-pipeline jwt=$CI_JOB_JWT)"
-    - vault read --field=display_name auth/token/lookup-self
+    - vault read auth/token/lookup-self
