@@ -40,8 +40,11 @@ resource "vault_jwt_auth_backend_role" "pipeline" {
   backend   = vault_jwt_auth_backend.gitlab.path
   role_type = "jwt"
 
-  role_name      = "app-pipeline"
-  token_policies = ["default"]
+  role_name = "app-pipeline"
+  token_policies = [
+    "default",
+    "gitlab-app-pipeline"
+  ]
 
   bound_claims = {
     project_path = var.gitlab_project_path
