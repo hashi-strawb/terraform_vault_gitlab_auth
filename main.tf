@@ -3,7 +3,14 @@ provider "vault" {
   # Credentials provided by VAULT_TOKEN env var
 }
 
+resource "vault_namespace" "gitlab_auth" {
+  path      = "gitlab_auth"
+  namespace = "demos"
+}
+
 resource "vault_jwt_auth_backend" "gitlab" {
+  namespace = vault_namespace.gitlab_auth.path_fq
+
   description  = "JWT auth backend for Gitlab-CI pipeline"
   path         = "jwt/gitlab"
   jwks_url     = "https://gitlab.com/-/jwks"
@@ -17,6 +24,8 @@ resource "vault_jwt_auth_backend" "gitlab" {
 }
 
 resource "vault_jwt_auth_backend_role" "pipeline" {
+  namespace = vault_namespace.gitlab_auth.path_fq
+
   backend   = vault_jwt_auth_backend.gitlab.path
   role_type = "jwt"
 
