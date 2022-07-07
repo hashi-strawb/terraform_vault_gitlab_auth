@@ -5,7 +5,7 @@ stages:
 Vault Authentication and Read Secret:
   stage: vault
   image:
-    name: vault:1.9.0
+    name: vault:latest
   script:
     # VAULT_ADDR and VAULT_NAMESPACE are set in env vars in
     #  Settings > CI/CD
